@@ -1,0 +1,27 @@
+{
+  "name": "jet-green-start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "config": {
+    "directories": {
+      "source": "./src",
+      "build": "./build"
+    }
+  },
+  "devDependencies": {
+    "eslint-formatter-pretty": "^1.1.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "path": "^0.12.7",
+    "require-dir": "^0.3.2",
+    "webpack": "^3.4.1",
+    "webpack-bundle-analyzer": "^2.8.3"
+  }
+}
