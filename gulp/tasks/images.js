@@ -10,9 +10,9 @@ gulp.task('images', () => {
   return gulp.src(dirs.source + '/images/**/*.{jpg,jpeg,gif,png,svg,ico}', {since: gulp.lastRun('images')})
     .pipe(newer(dirs.build + '/images'))
     .pipe(imagemin({
-        progressive: true,
-        svgoPlugins: [{removeViewBox: false}],
-        use: [pngquant()]
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
     }))
     .pipe(gulp.dest(dirs.build + '/images'));
 });

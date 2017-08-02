@@ -43,6 +43,7 @@
     "postcss-svgo": "^2.1.6",
     "require-dir": "^0.3.2",
     "stylelint": "^8.0.0",
+    "undertaker-forward-reference": "^1.0.1",
     "webpack": "^3.4.1",
     "webpack-bundle-analyzer": "^2.8.3"
   }

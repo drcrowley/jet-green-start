@@ -1,0 +1,37 @@
+@mixin font-face($name, $filename, $path, $weight:normal, $style:normal) {
+  @font-face {
+    font-family: $name;
+    src: url($path + $filename + '.eot');
+    src: local('☺'), url($path + $filename + '.woff') format('woff'), url($path + $filename + '.ttf') format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+@import 'rem';
+
+@function em($pixels, $context: $base-font-size) {
+  @return #{$pixels/$context}em;
+}
+
+@mixin holder {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 290px;
+  max-width: 1070px;
+  box-sizing: border-box;
+  padding-left: rem(20px);
+  padding-right: rem(20px);
+
+  .t-admin & {
+    width: 930px;
+  }
+}

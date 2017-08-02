@@ -1,0 +1,24 @@
+// base color vars
+$gray-color: #979fa5;
+$red-color: #bb1d2b;
+
+// semantic color vars
+$text-color: #000;
+
+// grid vars
+$gutter-width: 0px;
+$total-width: 100%;
+
+$base-font-size: 14px;
+$rem-baseline: $base-font-size;
+
+$mq-base-font-size: $base-font-size;
+$mq-static-breakpoint: mobile;
+$mq-breakpoints: (
+  mobile:  320px,
+  tablet:  1024px,
+  wide:    1280px,
+
+  desktopAd: 810px,
+  mobileLandscape: 480px
+);

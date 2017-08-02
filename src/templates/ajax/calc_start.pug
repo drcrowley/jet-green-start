@@ -1,0 +1,117 @@
+//include ../../blocks/select/select
+
+.popup.popup_calc
+  .popup__head
+    h2.popup__title Калькулятор клиента
+  form.form
+    .form__box
+      .form__item
+        .form__field.js-copy-link(data-link="blabla2", title="Cсылка скопирована в буфер обмена")
+          input(type="text", disabled, value="kia.ru/7466434/JD-PE-5DR-GT-MY16_AAY-UrbanYellow-18AlloyWheel", id="link", name="link", title="Cсылка скопирована в буфер обмена").form__input.form__input_with-icon
+          i.form__icon.form__icon_link
+    .form__box.slide-down-wrapper_opened
+      .form__head.slide-down-button_active.js-slide-down
+        h2.form__title Основная информация
+        .form__arrow
+      .form__body.slide-down
+        .form__set
+          .form__item
+            .form__row
+              .form__column.form__column_3
+                label(for="company").form__label Компания
+                .form__field
+                  input(type="text", id="company", name="company").form__input
+              .form__column.form__column_3
+                label(for="email").form__label E-mail
+                .form__field
+                  input(type="text", id="email", name="email").form__input
+              .form__column.form__column_6
+                label(for="company-person").form__label Представитель компании
+                .form__field
+                  input(type="text", id="company-person", name="company-person").form__input
+    .form__box.slide-down-wrapper_opened
+      .form__head.slide-down-button_active.js-slide-down
+        h2.form__title Автомобили
+        .form__arrow
+      .form__body.slide-down
+        .form__set
+          .form__item
+            .form__row
+              .form__column.form__column_3
+                label(for="model").form__label Выберите модель
+                .form__field
+                  //+select().form__select
+              .form__column.form__column_3
+                label(for="sale").form__label Скидка, %
+                .form__field
+                  input(type="text", id="sale", name="sale").form__input
+          .form__item
+            .form__row
+              .form__column.form__column_3
+                label.form__label Комплектация
+                .form__field
+                  //+select().form__select
+              .form__column.form__column_9
+                label.form__label Тип двигателя
+                .form__field
+                  input(type="text", id="type", name="type").form__input
+          button(type="button").form__show-button.js-slide-down Эксплуатационные расходы
+          .form__hidden.slide-down.slide-down_closed
+            .form__item
+              .form__row
+                .form__column.form__column_3
+                  label.form__label Транспортный налог
+                  .form__field
+                    input(type="text").form__input
+                    .form__currency руб./год
+                .form__column.form__column_3
+                  label.form__label КАСКО
+                  .form__field
+                    input(type="text").form__input
+                    .form__currency руб./год
+                .form__column.form__column_3
+                  label.form__label ОСАГО
+                  .form__field
+                    input(type="text").form__input
+                    .form__currency руб./год
+                .form__column.form__column_3
+                  label.form__label Стоимость ТО
+                  .form__field
+                    input(type="text").form__input
+                    .form__currency руб./год
+            .form__item
+              .form__row
+                .form__column.form__column_3
+                  label.form__label Расходы на резину
+                  .form__field
+                    input(type="text").form__input
+                    .form__currency руб./год
+                .form__column.form__column_3
+                  label.form__label Стоимость топлива
+                  .form__field
+                    input(type="text").form__input
+                    .form__currency руб./л
+                .form__column.form__column_6
+                  .form__row.form__row_sub
+                    .form__column.form__column_sub.form__column_8
+                      label.form__label Расход топлива
+                      .form__field
+                        //+select().form__select
+                    .form__column.form__column_sub.form__column_4
+                      label.form__label
+                      .form__field
+                        input(type="text").form__input
+                        .form__currency л/100 км
+            .form__item
+              .form__row
+                .form__column.form__column_3
+                  label.form__label Прочие расходы
+                  .form__field
+                    input(type="text").form__input
+                    .form__currency руб./год
+        button(type="button").form__add-button.js-add-form
+          i.form__add-icon
+          | Добавить еще автомобиль
+    .form__box
+      button(type="submit", disabled).button.button_inline Сохранить
+      button(type="button", disabled).button.button_inline.button_transparent Сохранить и отправить на e-mail

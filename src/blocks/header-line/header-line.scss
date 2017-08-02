@@ -1,0 +1,26 @@
+.header-line {
+  padding-top: rem(12px);
+  padding-bottom: rem(12px);
+  border-bottom: 1px solid #e4eaf0;
+  box-shadow: 0 11px 21px rgba(121,141,169,.09);
+
+  &__holder {
+    @include holder;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 500;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__panel {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: rem(40px);
+  }
+}

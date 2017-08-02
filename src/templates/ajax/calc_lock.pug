@@ -1,0 +1,58 @@
+//include ../../blocks/select/select
+
+.popup.popup_calc
+  .popup__head
+    h2.popup__title Калькулятор клиента
+    .popup__sub-title До 9 декабря 14:59
+  form.form
+    .form__box
+      .form__item
+        .form__field
+          input(type="text", disabled, value="kia.ru/7466434/JD-PE-5DR-GT-MY16_AAY-UrbanYellow-18AlloyWheel", id="link", name="link").form__input.form__input_with-icon
+          i.form__icon.form__icon_link
+    .form__box.slide-down-wrapper_opened
+      .form__head.slide-down-button_active.js-slide-down
+        h2.form__title Основная информация
+        .form__arrow
+      .form__body.slide-down
+        .form__set
+          .form__item
+            .form__row
+              .form__column.form__column_3
+                label(for="company").form__label Компания
+                .form__field
+                  input(type="text", id="company", name="company", value="coca cola", disabled).form__input
+              .form__column.form__column_3
+                label(for="email").form__label E-mail
+                .form__field
+                  input(type="text", id="email", name="email", value="cocacola@gmail.com", disabled).form__input
+              .form__column.form__column_6
+                label(for="company-person").form__label Представитель компании
+                .form__field
+                  input(type="text", id="company-person", name="company-person", disabled).form__input
+    .form__box.slide-down-wrapper_opened
+      .form__head.slide-down-button_active.js-slide-down
+        h2.form__title Автомобили
+        .form__arrow
+      .form__body.slide-down
+        .form__set
+          .form__item
+            .form__row
+              .form__column.form__column_3
+                label(for="model").form__label Выберите модель
+                .form__field
+                  //+select({options: ['Sorento Prime', 'Rio'], id: 'model', name: 'model', disabled: true}).form__select
+              .form__column.form__column_3
+                label(for="sale").form__label Скидка, %
+                .form__field
+                  input(type="text", id="sale", name="sale", disabled).form__input
+          .form__item
+            .form__row
+              .form__column.form__column_3
+                label.form__label Комплектация
+                .form__field
+                  //+select({options: ['Sorento Prime', 'Rio'], id: 'equip', name: 'equip', disabled: true}).form__select
+              .form__column.form__column_9
+                label.form__label Тип двигателя
+                .form__field
+                  input(type="text", id="type", name="type", disabled).form__input

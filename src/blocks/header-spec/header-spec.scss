@@ -1,0 +1,59 @@
+.header-spec {
+  display: none;
+
+  @include mq($from: tablet) {
+    display: block;
+  }
+
+  &__list {
+    padding-top: rem(25px);
+    padding-bottom: rem(25px);
+    @include clearfix;
+
+    @include mq($from: tablet) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__item {
+    @include mq($from: tablet) {
+      float: left;
+    }
+
+    &_right {
+      @include mq($from: tablet) {
+        float: right;
+        text-align: right;
+      }
+    }
+
+    & + & {
+      margin-top: rem(30px);
+
+      @include mq($from: tablet) {
+        margin-top: 0;
+        margin-left: 13%;
+      }
+    }
+  }
+
+  &__label {
+    font-family: 'Acrom', 'Arial', 'Helvetica', sans-serif;
+    font-size: rem(12px);
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #bfbfc5;
+    margin-bottom: rem(17px);
+  }
+
+  &__value {
+    color: #fff;
+    font-size: rem(20px);
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+  }
+}

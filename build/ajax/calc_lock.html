@@ -1,0 +1,86 @@
+<!--include ../../blocks/select/select-->
+<div class="popup popup_calc">
+  <div class="popup__head">
+    <h2 class="popup__title">Калькулятор клиента</h2>
+    <div class="popup__sub-title">До 9 декабря 14:59</div>
+  </div>
+  <form class="form">
+    <div class="form__box">
+      <div class="form__item">
+        <div class="form__field">
+          <input class="form__input form__input_with-icon" type="text" disabled="disabled" value="kia.ru/7466434/JD-PE-5DR-GT-MY16_AAY-UrbanYellow-18AlloyWheel" id="link" name="link" />
+          <i class="form__icon form__icon_link"></i>
+        </div>
+      </div>
+    </div>
+    <div class="form__box slide-down-wrapper_opened">
+      <div class="form__head slide-down-button_active js-slide-down">
+        <h2 class="form__title">Основная информация</h2>
+        <div class="form__arrow"></div>
+      </div>
+      <div class="form__body slide-down">
+        <div class="form__set">
+          <div class="form__item">
+            <div class="form__row">
+              <div class="form__column form__column_3">
+                <label class="form__label" for="company">Компания</label>
+                <div class="form__field">
+                  <input class="form__input" type="text" id="company" name="company" value="coca cola" disabled="disabled" /> </div>
+              </div>
+              <div class="form__column form__column_3">
+                <label class="form__label" for="email">E-mail</label>
+                <div class="form__field">
+                  <input class="form__input" type="text" id="email" name="email" value="cocacola@gmail.com" disabled="disabled" /> </div>
+              </div>
+              <div class="form__column form__column_6">
+                <label class="form__label" for="company-person">Представитель компании</label>
+                <div class="form__field">
+                  <input class="form__input" type="text" id="company-person" name="company-person" disabled="disabled" /> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form__box slide-down-wrapper_opened">
+      <div class="form__head slide-down-button_active js-slide-down">
+        <h2 class="form__title">Автомобили</h2>
+        <div class="form__arrow"></div>
+      </div>
+      <div class="form__body slide-down">
+        <div class="form__set">
+          <div class="form__item">
+            <div class="form__row">
+              <div class="form__column form__column_3">
+                <label class="form__label" for="model">Выберите модель</label>
+                <div class="form__field">
+                  <!--+select({options: ['Sorento Prime', 'Rio'], id: 'model', name: 'model', disabled: true}).form__select-->
+                </div>
+              </div>
+              <div class="form__column form__column_3">
+                <label class="form__label" for="sale">Скидка, %</label>
+                <div class="form__field">
+                  <input class="form__input" type="text" id="sale" name="sale" disabled="disabled" /> </div>
+              </div>
+            </div>
+          </div>
+          <div class="form__item">
+            <div class="form__row">
+              <div class="form__column form__column_3">
+                <label class="form__label">Комплектация</label>
+                <div class="form__field">
+                  <!--+select({options: ['Sorento Prime', 'Rio'], id: 'equip', name: 'equip', disabled: true}).form__select-->
+                </div>
+              </div>
+              <div class="form__column form__column_9">
+                <label class="form__label">Тип двигателя</label>
+                <div class="form__field">
+                  <input class="form__input" type="text" id="type" name="type" disabled="disabled" /> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
