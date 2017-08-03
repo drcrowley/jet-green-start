@@ -1,23 +1,3 @@
 .header {
-  &__holder {
-    @include holder;
-    padding-top: rem(15px);
-    padding-bottom: rem(15px);
-
-    @include mq($from: tablet) {
-      padding-top: rem(42px);
-      padding-bottom: rem(65px);
-    }
-  }
-
-  &__line {
-    position: relative;
-    @include clearfix;
-  }
-
-  &__spec-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+  
 }
