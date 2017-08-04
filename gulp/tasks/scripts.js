@@ -1,41 +1,39 @@
-var gulp          = require('gulp');
-var webpack       = require('webpack');
-var gutil         = require('gulp-util');
-var notify        = require('gulp-notify');
-//var server        = require('./server');
-//var config        = require('../config');
-var webpackConfig = require('../../webpack.config').createConfig;
+const gulp = require('gulp');
+const webpack = require('webpack');
+const webpackConfig = require('../../webpack.config.js');
+const notifier = require('node-notifier');
+const gulplog = require('gulplog');
 
-function handler(err, stats, cb) {
-    var errors = stats.compilation.errors;
-
-    if (err) throw new gutil.PluginError('webpack', err);
-
-    if (errors.length > 0) {
-        notify.onError({
-            title: 'Webpack Error',
-            message: '<%= error.message %>',
-            sound: 'Submarine'
-        }).call(null, errors[0]);
-    }
-
-    gutil.log('[webpack]', stats.toString({
-        colors: true,
-        chunks: false
-    }));
-
-    if (typeof cb === 'function') cb();
+function done(err, stats) {
+  if (err) {
+    console.log(err);
+  }
 }
 
-gulp.task('scripts', function(cb) {
-    webpack(webpackConfig()).run(function(err, stats) {
-        handler(err, stats, cb);
-    });
-});
+gulp.task('webpack', function(callback) {
+  webpack(webpackConfig, function(err, stats) {
+    if (!err) {
+      err = stats.toJson().errors[0];
+    }
 
-gulp.task('scripts:watch', function() {
-    webpack(webpackConfig()).watch({
-        aggregateTimeout: 100,
-        poll: false
-    }, handler);
+    if (err) {
+      notifier.notify({
+        title: 'Webpack',
+        message: err
+      });
+
+      gulplog.error(err);
+    } else {
+      gulplog.info(stats.toString({
+        colors: true
+      }));
+    }
+
+    // task never errs in watch mode, it waits and recompiles
+    if (!webpackConfig.watch && err) {
+      callback(err);
+    } else {
+      callback();
+    }
+  });
 });

@@ -1,108 +1,66 @@
 const webpack = require('webpack');
 const path = require('path');
-const util = require('gulp-util');
-//const config = require('./gulp/config');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const pjson = require('./package.json');
-const dirs = pjson.config.directories;
+const glob = require("glob");
 
-function createConfig() {
-  let isProduction,
-    webpackConfig;
+const isDev = false;
   
-  isProduction = !process.env.NODE_ENV || process.env.NODE_ENV == 'production';
+console.log(path.resolve(__dirname, 'node_modules'));
 
-  webpackConfig = {
-    context: path.join(__dirname, dirs.source + '/blocks'),
-    entry: {
-      // vendor: ['jquery'],
-      //app: './script.js',
-    },
-    output: {
-      path: path.join(__dirname, dirs.dest + '/scripts'),
-      filename: '[name].js',
-      publicPath: 'scripts/',
-    },
-    devtool: isProduction ?
-      '#source-map' :
-      '#cheap-module-eval-source-map',
-    plugins: [
-      // new webpack.optimize.CommonsChunkPlugin({
-      //     name: 'vendor',
-      //     filename: '[name].js',
-      //     minChunks: Infinity
-      // }),
-      new webpack.LoaderOptionsPlugin({
+module.exports = {
+  entry: './src/scripts/index.js',
+  output: {
+      path: __dirname + '/build/scripts/',
+      filename: 'scripts.js'
+  },
+  module: {
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: [
+          path.resolve(__dirname, 'node_modules')
+        ],
+        loader: 'eslint-loader',
         options: {
-          eslint: {
-            formatter: require('eslint-formatter-pretty')
-          }
+          fix: true,
+          failOnError: false,
+          emitWarning: true,
+          ignorePattern: __dirname + '/src/scripts/lib/'
         }
-      }),
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery',
-      }),
-      new webpack.NoEmitOnErrorsPlugin(),
-
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        analyzerPort: 4000,
-        openAnalyzer: false,
-      }),
-    ],
-    resolve: {
-      extensions: ['.js'],
-      alias: {
-        TweenLite: path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js'),
-        TweenMax: path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js'),
-        TimelineLite: path.resolve('node_modules', 'gsap/src/uncompressed/TimelineLite.js'),
-        TimelineMax: path.resolve('node_modules', 'gsap/src/uncompressed/TimelineMax.js'),
-        ScrollMagic: path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
-        'animation.gsap': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'),
-        'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
-      },
+      }, 
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: [
+          path.resolve(__dirname, 'node_modules')
+        ],
+      }
+    ]
+  },
+  devtool: "cheap-inline-module-source-map",
+  watch: true,
+  resolve: {
+    alias: {
+      $: "node_modules/jquery/dist"
     },
-    module: {
-      rules: [
-        {
-          enforce: 'pre',
-          test: /\.js$/,
-          exclude: [
-            path.resolve(__dirname, 'node_modules'),
-          ],
-          loader: 'eslint-loader',
-          options: {
-            fix: true,
-            cache: true,
-            ignorePattern: __dirname + '/src/js/lib/'
-          }
-        }, {
-          test: /\.js$/,
-          loader: 'babel-loader',
-          exclude: [
-            path.resolve(__dirname, 'node_modules'),
-          ],
-        }],
-    },
-  };
-
-  if (isProduction) {
-    webpackConfig.plugins.push(
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      })
-    );
-  }
-
-  return webpackConfig;
+    modules: [
+      path.resolve(__dirname),
+      'node_modules'
+    ]
+  },
+  plugins: [
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
 }
 
-module.exports = createConfig();
-module.exports.createConfig = createConfig;
+// if (!isDev) {
+//   module.exports.plugins.push(
+//     new webpack.optimize.UglifyJsPlugin({
+//       compress: {
+//         warnings:     false,
+//         drop_console: false,
+//         unsafe:       true
+//       }
+//     })
+//   );
+// }
