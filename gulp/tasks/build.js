@@ -5,6 +5,7 @@ const dirs = pjson.config.directories;
 
 gulp.task('build', gulp.series(
   'clean',
-  gulp.parallel('styles', 'templates', 'fonts', 'images', 'uploads'),
+  'script-collector',
+  gulp.parallel('styles', 'templates', 'fonts', 'images', 'uploads', 'scripts'),
   'page-list'
 ));

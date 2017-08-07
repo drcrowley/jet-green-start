@@ -3,14 +3,12 @@ const path = require('path');
 const glob = require("glob");
 
 const isDev = false;
-  
-console.log(path.resolve(__dirname, 'node_modules'));
 
 module.exports = {
   entry: './src/scripts/index.js',
   output: {
       path: __dirname + '/build/scripts/',
-      filename: 'scripts.js'
+      filename: 'script.js'
   },
   module: {
     rules: [
@@ -53,14 +51,14 @@ module.exports = {
   ]
 }
 
-// if (!isDev) {
-//   module.exports.plugins.push(
-//     new webpack.optimize.UglifyJsPlugin({
-//       compress: {
-//         warnings:     false,
-//         drop_console: false,
-//         unsafe:       true
-//       }
-//     })
-//   );
-// }
+if (!isDev) {
+  module.exports.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings:     false,
+        drop_console: false,
+        unsafe:       true
+      }
+    })
+  );
+}

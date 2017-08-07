@@ -11,8 +11,6 @@ gulp.task('script-collector', () => {
     .pipe(through2(
       function(file, enc, callback) {
         scripts += `import '${blocksDir + path.basename(file.path, '.js')}/${path.basename(file.path)}';\n`;
-
-        console.log(scripts);
         callback();
       },
       function(callback) {
@@ -28,6 +26,3 @@ gulp.task('script-collector', () => {
     ))
     .pipe(gulp.dest('./src/scripts'))
 });
-
-gulp.watch('./src/scripts/index.js')
-  .on('add', gulp.series('script-collector'))

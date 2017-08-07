@@ -4,13 +4,7 @@ const webpackConfig = require('../../webpack.config.js');
 const notifier = require('node-notifier');
 const gulplog = require('gulplog');
 
-function done(err, stats) {
-  if (err) {
-    console.log(err);
-  }
-}
-
-gulp.task('webpack', function(callback) {
+gulp.task('scripts', function(callback) {
   webpack(webpackConfig, function(err, stats) {
     if (!err) {
       err = stats.toJson().errors[0];
