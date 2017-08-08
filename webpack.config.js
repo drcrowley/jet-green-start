@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const glob = require("glob");
 
-const isDev = false;
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
+let flag = false;
 
 module.exports = {
   entry: './src/scripts/index.js',
@@ -25,29 +25,34 @@ module.exports = {
           emitWarning: true,
           ignorePattern: __dirname + '/src/scripts/lib/'
         }
-      }, 
+      },
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        include: path.resolve(__dirname, 'src/blocks'),
         exclude: [
           path.resolve(__dirname, 'node_modules')
-        ],
+        ]
       }
     ]
   },
-  devtool: "cheap-inline-module-source-map",
-  watch: true,
+  devtool: isDev ? "cheap-inline-module-source-map" : null,
+  watch: isDev,
+  watchOptions: {
+    ignored: /node_modules/,
+    aggregateTimeout: 100
+  },
   resolve: {
-    alias: {
-      $: "node_modules/jquery/dist"
-    },
     modules: [
-      path.resolve(__dirname),
-      'node_modules'
+      path.resolve(__dirname, 'src'),
+      path.resolve('./node_modules')
     ]
   },
   plugins: [
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery'
+    })
   ]
 }
 

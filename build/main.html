@@ -21,11 +21,30 @@
     <link rel="stylesheet" href="styles/style.css"> </head>
   <body>
     <div class="page">
-      <header class="header">
-        <p>header</p>
-      </header>
+      <div class="header">
+        <div class="header__mobile-wrap" id="mobile-header"></div>
+        <div class="container container_nowrap">
+          <div class="header__clients">
+            <span class="header__clients-count">21 клиента</span>
+          </div>
+          <a class="header__humb js-mobile-header" href="#"></a>
+        </div>
+      </div>
+      <div class="header header_fixed header_fixed-fix js-fixed-header">
+        <div class="container">
+          <a class="header__humb js-mobile-header" href="#"></a>
+        </div>
+      </div>
       <main class="main">
         <p>Контент</p>
+        <div class="js-items-slider">
+          <div style="width: 400px; height: 200px;display: inline-block; background: #876;"></div>
+          <div style="width: 400px; height: 200px;display: inline-block; background: #000;"></div>
+          <div style="width: 400px; height: 200px;display: inline-block; background: #999;"></div>
+          <div style="width: 400px; height: 200px;display: inline-block; background: #876;"></div>
+          <div style="width: 400px; height: 200px;display: inline-block; background: #000;"></div>
+          <div style="width: 400px; height: 200px;display: inline-block; background: #999;"></div>
+        </div>
       </main>
     </div>
     <script src="scripts/script.js"></script>

@@ -1,1 +1,10 @@
-import '../blocks/header/header.js';
+import 'blocks/add-new-card/add-new-card.js';
+import 'blocks/about-waterbody/about-waterbody.js';
+import 'blocks/discount-rules/discount-rules.js';
+import 'blocks/find-waterbody/find-waterbody.js';
+import 'blocks/header/header.js';
+import 'blocks/nav/nav.js';
+import 'blocks/new/new.js';
+import 'blocks/review-form/review-form.js';
+import 'blocks/use-again/use-again.js';
+import 'blocks/user-select/user-select.js';

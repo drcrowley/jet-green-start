@@ -16,6 +16,7 @@ gulp.task('watch', () => {
 
   gulp.watch([dirs.source + '/blocks/**/*.js'])
    .on('add', gulp.series('script-collector'))
+   .on('unlink', gulp.series('script-collector'))
 
   //gulp.watch([dirs.source + '/scripts/**/*.js', dirs.source + '/blocks/**/*.js'], gulp.series('scripts'));
   gulp.watch([dirs.source + '/images/*.{jpg,jpeg,gif,png,svg,ico}'], gulp.series('images'));

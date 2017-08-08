@@ -1,2 +1,3 @@
-console.log('Hello Webpack!!!');
+
+console.log('Hello W!!!');
 console.log('Hello Webpack!!!');

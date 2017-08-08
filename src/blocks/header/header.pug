@@ -1,3 +1,10 @@
-mixin header(data)
-  header.header&attributes(attributes)
-    p header
+mixin header(navList)
+  .header&attributes(attributes)
+    .header__mobile-wrap#mobile-header
+    .container.container_nowrap
+      .header__clients
+        span.header__clients-count 21 клиента
+      a(href="#").header__humb.js-mobile-header
+  .header.header_fixed.header_fixed-fix.js-fixed-header
+    .container
+      a(href="#").header__humb.js-mobile-header
