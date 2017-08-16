@@ -11,7 +11,7 @@ const svgo = require('postcss-svgo');
 const csso = require('gulp-csso');
 const rename = require('gulp-rename');
 const autoprefixer = require('autoprefixer');
-const browserSync = require('browser-sync').create();
+const browserSync = require('./serve.js');
 
 const pjson = require('../../package.json');
 const dirs = pjson.config.directories;

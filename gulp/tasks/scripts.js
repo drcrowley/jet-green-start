@@ -1,44 +1,40 @@
 const gulp = require('gulp');
 const webpack = require('webpack');
-const webpackConfig = require('../../webpack.config.js');
 const notifier = require('node-notifier');
 const gulplog = require('gulplog');
-const browserSync = require('browser-sync').create();
+const fs = require('fs');
+const browserSync = require('./serve.js');
 
+let currMtime = 0;
 
-gulp.task('scripts', function(callback) {
-  let firstInfo = false;
+gulp.task('scripts', (callback) => {
+  const webpackConfig = require('../../webpack.config.js');
 
   webpack(webpackConfig, function(err, stats) {
-    if (firstInfo == false) {
-      firstInfo = true;
-      callback();
-
-      return false;
-    }
-
     if (!err) {
       err = stats.toJson().errors[0];
     }
+    if (global.changeManifest) {
+      if (err) {
+        notifier.notify({
+          title: 'Webpack',
+          message: err
+        });
 
-    if (err) {
-      notifier.notify({
-        title: 'Webpack',
-        message: err
-      });
+        gulplog.error(err);
+      }
 
-      gulplog.error(err);
-    } else {
+      if (!webpackConfig.watch && err) {
+        global.changeManifest = false;
+        callback(err);
+      }
+
       gulplog.info(stats.toString({
         colors: true
       }));
 
-    }
-
-    // task never errs in watch mode, it waits and recompiles
-    if (!webpackConfig.watch && err) {
-      callback(err);
-    } else {
+      global.changeManifest = false;
+      browserSync.reload();
       callback();
     }
   });

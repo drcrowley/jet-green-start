@@ -15,10 +15,12 @@ gulp.task('watch', () => {
   });
 
   gulp.watch([dirs.source + '/blocks/**/*.js'])
-   .on('add', gulp.series('script-collector'))
-   .on('unlink', gulp.series('script-collector'))
+  .on('change', () => {
+    global.changeManifest = true;
+  })
+  .on('add', gulp.series('script-collector'))
+  .on('unlink', gulp.series('script-collector'))
 
-  //gulp.watch([dirs.source + '/scripts/**/*.js', dirs.source + '/blocks/**/*.js'], gulp.series('scripts'));
   gulp.watch([dirs.source + '/images/*.{jpg,jpeg,gif,png,svg,ico}'], gulp.series('images'));
   gulp.watch([dirs.source + '/fonts/*.{woff,woff2,ttf,eot,otf,svg}'], gulp.series('fonts'));
   gulp.watch([dirs.source + '/uploads/*'], gulp.series('uploads'));

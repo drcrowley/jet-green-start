@@ -4,7 +4,7 @@ const pug = require('gulp-pug');
 const prettify = require('gulp-prettify');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
-const browserSync = require('browser-sync').create();
+const browserSync = require('./serve.js');
 const emitty = require('emitty').setup('src', 'pug');
 
 const pjson = require('../../package.json');

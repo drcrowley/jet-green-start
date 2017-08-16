@@ -1,9 +1,0 @@
-@import 'mixins';
-
-@include font-face('Acrom', 'Acrom-Regular','../fonts/', 400, normal);
-@include font-face('Acrom', 'Acrom-Medium','../fonts/', 500, normal);
-@include font-face('Acrom', 'Acrom-Bold','../fonts/', 700, normal);
-
-@include font-face('NeoSansCyr', 'NeoSansCyr-Light','../fonts/', 300, normal);
-@include font-face('NeoSansCyr', 'NeoSansCyr-Regular','../fonts/', 400, normal);
-@include font-face('NeoSansCyr', 'NeoSansCyr-Medium','../fonts/', 500, normal);

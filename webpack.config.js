@@ -1,14 +1,14 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
-let flag = false;
 
 module.exports = {
   entry: './src/scripts/index.js',
   output: {
-      path: __dirname + '/build/scripts/',
-      filename: 'script.js'
+    path: __dirname + '/build/scripts/',
+    filename: 'script.js'
   },
   module: {
     rules: [
@@ -22,25 +22,23 @@ module.exports = {
         options: {
           fix: true,
           failOnError: false,
-          emitWarning: true,
-          ignorePattern: __dirname + '/src/scripts/lib/'
+          emitWarning: true
         }
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: path.resolve(__dirname, 'src/blocks'),
+        include: path.resolve(__dirname, 'src'),
         exclude: [
           path.resolve(__dirname, 'node_modules')
         ]
       }
     ]
   },
-  devtool: isDev ? "cheap-inline-module-source-map" : null,
+  devtool: isDev ? "cheap-inline-module-source-map" : false,
   watch: isDev,
   watchOptions: {
-    ignored: /node_modules/,
-    aggregateTimeout: 100
+    ignored: /node_modules/
   },
   resolve: {
     modules: [
@@ -51,7 +49,8 @@ module.exports = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
-      $: 'jquery'
+      $: 'jquery',
+      jQuery: 'jquery'
     })
   ]
 }
