@@ -10,7 +10,7 @@ const pjson = require('../../package.json');
 const dirs = pjson.config.directories;
 
 gulp.task('scss-lint', () => {
-  return gulp.src([dirs.source + '/styles/**/*.scss', dirs.source + '/blocks/**/*.scss', '!' + dirs.source + '/styles/vendor/*.scss'])
+  return gulp.src([dirs.source + '/styles/**/*.scss', dirs.source + '/blocks/**/*.scss', '!' + dirs.source + '/styles/vendor/*.scss', '!' + dirs.source + '/styles/base/*.scss'])
     .pipe(plumber({
       errorHandler: notify.onError("Error: <%= error.message %>")
     }))
