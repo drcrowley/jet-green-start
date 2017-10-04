@@ -32,6 +32,13 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, 'node_modules')
         ]
+      },
+      {
+        test: require.resolve("jquery"), 
+        use: [{
+            loader: 'expose-loader',
+            options: '$'
+        }]
       }
     ]
   },
@@ -50,7 +57,8 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: 'jquery'
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
   ]
 }
