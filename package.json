@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/gulp",
     "production": "cross-env NODE_ENV=production ./node_modules/.bin/gulp build",
-    "create": "node createBlock.js"
+    "create": "node ./gulp/utils/createBlock.js"
   },
   "author": "",
   "license": "ISC",

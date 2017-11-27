@@ -1,24 +1,22 @@
 'use strict';
 
 // Генератор файлов блока
-
 // Использование: node createBlock.js [имя блока] [доп. расширения через пробел]
 
-const fs = require('fs');                // будем работать с файловой системой
-const pjson = require('./package.json'); // получим настройки из package.json
-const dirs = pjson.config.directories;   // отдельно имеем объект с директориями (где лежит папка с блоками)
-const mkdirp = require('mkdirp');        // зависимость
+const fs = require('fs'); // будем работать с файловой системой
+const pjson = require('../../package.json'); // получим настройки из package.json
+const dirs = pjson.config.directories; // отдельно имеем объект с директориями (где лежит папка с блоками)
+const mkdirp = require('mkdirp'); // зависимость
 
-let blockName = process.argv[2];          // получим имя блока
+let blockName = process.argv[2]; // получим имя блока
 let defaultExtensions = ['pug', 'scss']; // расширения по умолчанию
-let extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));  // добавим введенные при вызове расширения (если есть)
+let extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3))); // добавим введенные при вызове расширения (если есть)
 
 // Если есть имя блока
 if(blockName) {
 
   let dirPath = dirs.source + '/blocks/' + blockName + '/'; // полный путь к создаваемой папке блока
-  mkdirp(dirPath, function(err){                            // создаем
-
+  mkdirp(dirPath, function(err){
     // Если какая-то ошибка — покажем
     if(err) {
       console.error('[NTH] Отмена операции: ' + err);
@@ -32,11 +30,11 @@ if(blockName) {
       extensions.forEach(function(extention){
 
         let filePath = dirPath + blockName + '.' + extention; // полный путь к создаваемому файлу
-        let fileContent = '';                                 // будущий контент файла
-        let fileCreateMsg = '';                               // будущее сообщение в консоли при создании файла
+        let fileContent = ''; // будущий контент файла
+        let fileCreateMsg = ''; // будущее сообщение в консоли при создании файла
 
         if(extention == 'scss') {
-					fileContent = '.' + blockName +' {\n\n}';
+          fileContent = '.' + blockName +' {\n\n}';
         }
         else if(extention == 'pug') {
           fileContent = 'mixin '+ blockName +'(data)\n  .'+ blockName +'&attributes(attributes)';
@@ -80,7 +78,7 @@ function uniqueArray(arr) {
 
 // Привести к camelCase
 function dashToCamelCase(myStr) {
-    return myStr.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+  return myStr.replace(/-([a-z])/g, function(g) { return g[1].toUpperCase(); });
 }
 
 // Проверка существования файла

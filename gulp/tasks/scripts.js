@@ -2,10 +2,7 @@ const gulp = require('gulp');
 const webpack = require('webpack');
 const notifier = require('node-notifier');
 const gulplog = require('gulplog');
-const fs = require('fs');
 const browserSync = require('./serve.js');
-
-let currMtime = 0;
 
 gulp.task('scripts', (callback) => {
   const webpackConfig = require('../../webpack.config.js');

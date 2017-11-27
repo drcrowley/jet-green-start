@@ -1,7 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
-
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
 module.exports = {
@@ -34,10 +32,10 @@ module.exports = {
         ]
       },
       {
-        test: require.resolve('jquery'), 
+        test: require.resolve('jquery'),
         use: [{
-            loader: 'expose-loader',
-            options: '$'
+          loader: 'expose-loader',
+          options: '$'
         }]
       }
     ]
@@ -61,7 +59,7 @@ module.exports = {
       'window.jQuery': 'jquery'
     })
   ]
-}
+};
 
 if (!isDev) {
   module.exports.plugins.push(

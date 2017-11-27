@@ -15,14 +15,14 @@ const browserSync = require('./serve.js');
 const pjson = require('../../package.json');
 
 const dirs = pjson.config.directories;
-const isProduction = !process.env.NODE_ENV || process.env.NODE_ENV == 'production';
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
 gulp.task('styles', gulp.series('scss-lint',() => {
   return gulp.src(dirs.source + '/styles/main.scss')
     .pipe(plumber({
       errorHandler: notify.onError("Error: <%= error.message %>")
     }))
-    .pipe(gulpIf(!isProduction, sourcemaps.init()))
+    .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
@@ -33,8 +33,8 @@ gulp.task('styles', gulp.series('scss-lint',() => {
       }),
       svgo()
     ]))
-    .pipe(gulpIf(!isProduction, sourcemaps.write()))
-    .pipe(gulpIf(isProduction, csso()))
+    .pipe(gulpIf(isDev, sourcemaps.write()))
+    .pipe(gulpIf(!isDev, csso()))
     .pipe(rename('style.css'))
     .pipe(gulp.dest(dirs.build + '/styles'))
     .pipe(browserSync.stream());
