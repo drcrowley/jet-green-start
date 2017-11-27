@@ -1,0 +1,13 @@
+doctype html
+block vars
+html(lang="ru", class= htmlClass ? htmlClass : '')
+  include ../includes/head
+  body
+    .page
+      block header
+      main.main
+        block main
+      block footer
+    include ../includes/scripts
+    include ../includes/svg-symbol
+    block local-scripts

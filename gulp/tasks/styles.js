@@ -12,8 +12,8 @@ const csso = require('gulp-csso');
 const rename = require('gulp-rename');
 const autoprefixer = require('autoprefixer');
 const browserSync = require('./serve.js');
-
 const pjson = require('../../package.json');
+
 const dirs = pjson.config.directories;
 const isProduction = !process.env.NODE_ENV || process.env.NODE_ENV == 'production';
 
@@ -26,7 +26,8 @@ gulp.task('styles', gulp.series('scss-lint',() => {
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
-      autoprefixer({ browsers: ['last 4 versions', 'IE 9'], cascade: false }),
+      autoprefixer({
+        browsers: ['last 4 versions', 'IE 9'], cascade: false }),
       inlineSvg({
         path: dirs.source + '/icons'
       }),

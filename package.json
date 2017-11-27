@@ -67,5 +67,7 @@
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.8.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
 }

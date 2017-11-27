@@ -1,7 +1,7 @@
 // Require all tasks in gulp/tasks, including subfolders
 const gulp = require('gulp');
-const FwdRef = require('undertaker-forward-reference');
+const fwdRef = require('undertaker-forward-reference');
+const requireDir = require('require-dir');
+gulp.registry(fwdRef());
 
-gulp.registry(FwdRef());
-
-require('require-dir')('./gulp/tasks', {recurse: true});
+requireDir('./gulp/tasks', {recurse: true});
