@@ -15,11 +15,17 @@ gulp.task('templates', () => {
     .pipe(plumber({
       errorHandler: notify.onError("Error: <%= error.message %>")
     }))
-    .pipe(gulpIf(global.watch, emitty.stream(global.emittyChangedFile)))
+    .pipe(gulpIf(global.emittyChangedFile, emitty.stream(global.emittyChangedFile)))
     .pipe(pug({
+      locals: requireUncached('../../src/templates/data.json'),
       pretty: true
     }))
     .pipe(prettify({indent_size: 2}))
     .pipe(gulp.dest(dirs.build))
     .on('end', browserSync.reload);
 });
+
+function requireUncached( $module ) {
+  delete require.cache[require.resolve( $module )];
+  return require( $module );
+}

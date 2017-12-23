@@ -4,14 +4,14 @@ const pjson = require('../../package.json');
 const dirs = pjson.config.directories;
 
 gulp.task('watch', () => {
-  global.watch = true;
-
   gulp.watch([dirs.source + '/styles/**/*.scss', dirs.source + '/blocks/**/*.scss'], gulp.series('styles'));
 
-  gulp.watch([dirs.source + '/templates/**/*.pug', dirs.source + '/blocks/**/*.pug'], gulp.series('templates'))
+  gulp.watch([dirs.source + '/templates/**/*.{pug}', dirs.source + '/blocks/**/*.pug'], gulp.series('templates'))
     .on('all', (event, filepath) => {
       global.emittyChangedFile = filepath;
     });
+
+  gulp.watch([dirs.source + '/templates/**/*.{json}'], gulp.series('templates'));
 
   gulp.watch([dirs.source + '/blocks/**/*.js'])
     .on('change', () => {

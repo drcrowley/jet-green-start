@@ -1,12 +1,17 @@
-extends layouts/layout
+extends _layouts/layout
+include ../blocks/header/header
+include ../blocks/footer/footer
+include ../blocks/products/products
 
 block vars
   - var title = 'Главная таблица';
   - var htmlClass = 't-main';
 
 block header
+  +header()
 
 block main
-  p test
+  +products(products)
 
 block footer
+  +footer()

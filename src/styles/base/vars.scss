@@ -1,19 +1,16 @@
 // base color vars
-$gray-color: #b1c4d3;
+$gray-color: #ececec;
 $red-color: #f4324c;
-$blue-color: #56ccf2;
+$blue-color: #c8f2ff;
 
 // semantic color vars
 $text-color: #393939;
 
 // typography vars
 $base-font-size: 14px;
-$noto: 'Noto Sans', 'Arial', 'Helvetica', sans-serif;
-$gilroy: 'Gilroy', 'Arial', 'Helvetica', sans-serif;
+$circe: 'Circe', 'Arial', 'Helvetica', sans-serif;
 
 // media queries vars
-$mq-base-font-size: $base-font-size;
-$mq-static-breakpoint: mobile;
 $mq-breakpoints: (
   mobile:  320px,
   tablet: 640px,

@@ -3,6 +3,8 @@ const gulpIf = require('gulp-if');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const sass = require('gulp-sass');
+const moduleImporter = require('sass-npm-import');
+const cssimport = require("gulp-cssimport");
 const sassGlob = require('gulp-sass-glob');
 const postcss = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
@@ -24,7 +26,8 @@ gulp.task('styles', gulp.series('scss-lint',() => {
     }))
     .pipe(gulpIf(isDev, sourcemaps.init()))
     .pipe(sassGlob())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({ importer: moduleImporter({ prefix: '~',extensions: ['.scss', '.sass', '.css']}) }).on('error', sass.logError))
+    .pipe(cssimport())
     .pipe(postcss([
       autoprefixer({
         browsers: ['last 4 versions', 'IE 9'], cascade: false }),

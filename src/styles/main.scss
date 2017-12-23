@@ -1,8 +1,6 @@
-@import 'base/mq';
-@import 'base/mixins';
-@import 'base/vars';
-@import 'base/fonts';
-@import 'base/layout';
-@import 'base/vendor';
-@import 'base/normalize';
+@import './base/mixins';
+@import './base/vendor';
+@import './base/vars';
+@import './base/fonts';
+@import './base/layout';
 @import '../blocks/**/*.scss';

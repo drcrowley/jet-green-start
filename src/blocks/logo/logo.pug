@@ -1,2 +1,7 @@
 mixin logo(data)
   .logo&attributes(attributes)
+    a(href="main.html").logo__link
+      svg(viewBox="0 0 95 18", xml:space='preserve', class="logo__image")
+        use(xlink:href="#logo")
+      if main
+        h1.logo__title Jet-Start

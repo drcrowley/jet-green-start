@@ -1,0 +1,6 @@
+mixin products(data)
+  .products&attributes(attributes)
+    .products__holder
+      each item in data
+        .products__item
+          a(href=item.link).products__link #{item.title}

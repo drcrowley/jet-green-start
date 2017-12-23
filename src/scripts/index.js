@@ -1,1 +1,1 @@
-import 'blocks/logo/logo.js';
+import 'blocks/products/products.js';

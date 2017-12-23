@@ -1,0 +1,12 @@
+.header {
+  background: $blue-color;
+  padding: 10px 0;
+
+  @include mq($from: 'desktop') {
+    background: $gray-color;
+  }
+
+  &__holder {
+    @include holder;
+  }
+}

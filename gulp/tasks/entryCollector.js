@@ -4,15 +4,15 @@ const File = require('vinyl');
 const path = require('path');
 
 let scripts = '';
-const blocksDir = 'blocks/';
 
 gulp.task('script-collector', () => {
   return gulp.src('src/blocks/**/*.js')
     .pipe(through2(
       function(file, enc, callback) {
         const filePath = file.path;
+        const blockName = path.basename(filePath, '.js');
 
-        scripts += `import '${filePath.slice(filePath.indexOf(blocksDir))}'\n`;
+        scripts += `import 'blocks/${blockName}/${blockName}.js'\n`;
         callback();
       },
       function(callback) {
@@ -26,7 +26,7 @@ gulp.task('script-collector', () => {
         scripts = '';
         this.push(commonScript);
         callback();
-      } 
+      }
     ))
     .pipe(gulp.dest('./src/scripts/'))
     .on('end', () => {

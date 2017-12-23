@@ -1,3 +1,21 @@
 .logo {
-  color: #000;
+  z-index: 1;
+  outline: none;
+  width: 140px;
+  height: 70px;
+
+  &__link {
+    display: block;
+    color: inherit;
+  }
+
+  &__image {
+    display: block;
+    width: 140px;
+    height: 70px;
+  }
+
+  &__title {
+    @include visuallyhidden;
+  }
 }

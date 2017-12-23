@@ -9,8 +9,7 @@ gulp.task('serve', () => {
     server: dirs.build,
     open: false,
     ghostMode: false,
-    notify: false,
-    timestamps: false
+    notify: false
   });
 });
 

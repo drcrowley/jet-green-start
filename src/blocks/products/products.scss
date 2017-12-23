@@ -1,0 +1,46 @@
+.products {
+  $root: &;
+
+  padding: 30px 0;
+
+  &__holder {
+    @include holder;
+  }
+
+  &__item {
+    padding: 15px 0;
+    font-size: 20px;
+
+    @include mq($from: 'desktop') {
+      font-size: 16px;
+    }
+
+    & + & {
+      border-top: 1px solid $gray-color;
+      margin-top: 5px;
+    }
+
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      height: 27px;
+      margin-right: 10px;
+      background: svg-load('../icons/download.svg', fill=$gray-color) no-repeat;
+    }
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    transition: border-color .2s;
+    display: inline-block;
+    vertical-align: middle;
+
+    &:hover {
+      border-color: transparent
+    }
+  }
+}

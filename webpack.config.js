@@ -3,7 +3,10 @@ const path = require('path');
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV == 'dev';
 
 module.exports = {
-  entry: './src/scripts/index.js',
+  entry: [
+    require.resolve('./src/scripts/polyfills'),
+    './src/scripts/index.js'
+  ],
   output: {
     path: __dirname + '/build/scripts/',
     filename: 'script.js'
@@ -43,11 +46,12 @@ module.exports = {
   devtool: isDev ? "cheap-inline-module-source-map" : false,
   watch: isDev,
   watchOptions: {
-    ignored: /node_modules/
+    ignored: '/node_modules/'
   },
   resolve: {
     modules: [
       path.resolve(__dirname, 'src'),
+      path.resolve(__dirname, 'src/scripts/utils'),
       path.resolve('./node_modules')
     ]
   },

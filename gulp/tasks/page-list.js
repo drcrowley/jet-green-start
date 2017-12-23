@@ -1,23 +1,26 @@
 const gulp = require('gulp');
+const pug = require('gulp-pug');
 const fs = require('fs');
 
 const pjson = require('../../package.json');
 const dirs = pjson.config.directories;
 
-gulp.task('page-list', (done) => {
-  var files = fs.readdirSync(dirs.build).filter((item) =>  {
+gulp.task('page-list', () => {
+  const pages = fs.readdirSync(dirs.build).filter((item) => {
     return fs.statSync(dirs.build + '/' + item).isFile() && /.html/.test(item) && item !== 'index.html';
+  }).map((item) => {
+    return item.replace('.html', '');
   });
-  var list = '';
 
-  files.forEach((fileItem) => {
-    list += '<li><a href="'+ fileItem +'">' + fileItem + '</a></li>';
-  });
-  var template = '<ul>' + list + '</ul>';
+  const data = {
+    name: pjson.name,
+    pages: pages
+  };
 
-  fs.writeFile(dirs.build + '/index.html', template, (err) => {
-    if(err) throw err;
-    console.log("The file was created!");
-    done();
-  });
+  return gulp.src(['./gulp/utils/**/index.pug'])
+    .pipe(pug({
+      locals: data,
+      pretty: true
+    }))
+    .pipe(gulp.dest(dirs.build));
 });

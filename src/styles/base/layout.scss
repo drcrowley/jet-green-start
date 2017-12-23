@@ -1,20 +1,18 @@
 html {
-  text-size-adjust: 100%;
-  font-size: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
+  font-size: 100%;
   height: 100%;
 }
 
 body {
-  font-family: $noto;
+  font-family: $circe;
   line-height: 1.4;
   font-weight: 400;
   color: $text-color;
-  min-height: 100%;
+  height: 100%;
   font-size: 14px;
-  background: #eff2f7;
   overflow-y: scroll;
 
   &.t-popup {
@@ -25,6 +23,10 @@ body {
     bottom: 0;
     overflow:hidden;
   }
+}
+
+.main {
+  flex: 1 0 auto;
 }
 
 ::selection {
